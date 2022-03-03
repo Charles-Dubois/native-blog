@@ -42,7 +42,7 @@ export default function Login() {
       <SafeAreaView style={styles.container}>
         <TextInput
           style={styles.input}
-          placeholder="  ID"
+          placeholder=" ID"
           onChangeText={(text) => validateID(text)}
         ></TextInput>
         <TouchableOpacity style={styles.btn} onPress={handlePress}>
@@ -55,7 +55,7 @@ export default function Login() {
 
 const styles = StyleSheet.create({
   input: {
-    width: 200,
+    width: 100,
     borderRadius: 15,
     borderWidth: 2,
     marginBottom: 5,
@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    marginTop: 200,
   },
   btn: {
     borderRadius: 1000,
