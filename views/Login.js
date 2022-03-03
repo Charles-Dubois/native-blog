@@ -3,9 +3,11 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  Text,
   Alert,
+  View,
 } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { Icon } from "react-native-elements";
 import { useState, useContext } from "react";
 import { Context } from "../App";
 
@@ -36,17 +38,18 @@ export default function Login() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="  ID"
-        onChangeText={(text) => validateID(text)}
-      ></TextInput>
-
-      <TouchableOpacity style={styles.btn} onPress={handlePress}>
-        <Text style={styles.textBtn}>Login</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <TextInput
+          style={styles.input}
+          placeholder="  ID"
+          onChangeText={(text) => validateID(text)}
+        ></TextInput>
+        <TouchableOpacity style={styles.btn} onPress={handlePress}>
+          <Icon name="login" color="white" type="MaterialIcons" />
+        </TouchableOpacity>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
@@ -63,7 +66,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   btn: {
-    borderRadius: 15,
+    borderRadius: 1000,
     backgroundColor: "darkgrey",
     padding: 10,
   },
