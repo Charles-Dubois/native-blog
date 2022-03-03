@@ -1,20 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from "react-native";
+import { useState, createContext } from "react";
+import { NativeRouter, Routes, Route } from "react-router-native";
 
+import Login from "./views/Login";
+import Home from "./views/Home";
+
+export const Context = createContext("default value");
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
+  const handleLoggedIn = () => {
+    setIsLoggedIn((prev) => !prev);
+  };
+
+  const contextValue = {
+    isLoggedIn: isLoggedIn,
+    setIsLoggedIn: handleLoggedIn,
+    userEmail: userEmail,
+    setUserEmail: setUserEmail,
+  };
+
+  const renderLoggedIn = () => {
+    return isLoggedIn ? (
+      <Home context={contextValue} />
+    ) : (
+      <Login context={contextValue} />
+    );
+  };
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Context.Provider value={contextValue}>
+      <SafeAreaView style={styles.container}>
+        <NativeRouter>
+          <Routes>
+            <Route exact path="/" element={renderLoggedIn()} />
+          </Routes>
+        </NativeRouter>
+      </SafeAreaView>
+    </Context.Provider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
