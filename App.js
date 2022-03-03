@@ -8,7 +8,7 @@ import Home from "./views/Home";
 export const Context = createContext("default value");
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userEmail, setUserEmail] = useState("");
+  const [Id, setId] = useState("");
   const handleLoggedIn = () => {
     setIsLoggedIn((prev) => !prev);
   };
@@ -16,8 +16,8 @@ export default function App() {
   const contextValue = {
     isLoggedIn: isLoggedIn,
     setIsLoggedIn: handleLoggedIn,
-    userEmail: userEmail,
-    setUserEmail: setUserEmail,
+    Id: Id,
+    setId: setId,
   };
 
   const renderLoggedIn = () => {

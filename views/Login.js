@@ -17,9 +17,10 @@ export default function Login() {
     setIdCheck(bool);
   };
 
-  const validateID = (password) => {
-    const passwordRegex = /^[1-9]|10$/;
-    if (passwordRegex.test(password) && password <= 10) {
+  const validateID = (idUser) => {
+    context.setId(idUser.toString());
+    const idUserRegex = /^[1-9]|10$/;
+    if (idUserRegex.test(idUser) && idUser <= 10) {
       return handleId(true);
     } else {
       return handleId(false);
