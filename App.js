@@ -1,7 +1,7 @@
 import { SafeAreaView, StyleSheet } from "react-native";
 import { useState, createContext } from "react";
-import { NativeRouter, Routes, Route } from "react-router-native";
-
+import { NativeRouter, Routes, Route, View } from "react-router-native";
+import Navbar from "./components/Navbar";
 import Login from "./views/Login";
 import Home from "./views/Home";
 
@@ -35,6 +35,8 @@ export default function App() {
             <Route exact path="/" element={renderLoggedIn()} />
           </Routes>
         </NativeRouter>
+
+        {/* <Navbar /> */}
       </SafeAreaView>
     </Context.Provider>
   );
@@ -43,6 +45,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // flexDirection: "column",
+    // justifyContent: "space-between",
     alignItems: "center",
     justifyContent: "center",
   },
