@@ -18,9 +18,10 @@ export default function Home() {
 
   return context.posts.length > 0 ? (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView>
         <Logout></Logout>
         <FlatList
+          style={styles.list}
           data={context.posts}
           renderItem={(data) => (
             <>
@@ -59,11 +60,12 @@ export default function Home() {
   );
 }
 const styles = StyleSheet.create({
-  id: { fontSize: 10 },
+  id: { fontSize: 10, color: "rgba(17,15,60,0.908000700280112)" },
   title: {
     fontWeight: "bold",
+    color: "rgba(17,15,60,0.908000700280112)",
   },
-  body: {},
+  body: { color: "rgba(17,15,60,0.908000700280112)" },
   header: {
     flexDirection: "row",
     alignItems: "center",
@@ -72,5 +74,10 @@ const styles = StyleSheet.create({
   },
   textHeader: {
     margin: 5,
+  },
+  list: {
+    marginTop: 10,
+    marginLeft: 20,
+    marginRight: 20,
   },
 });

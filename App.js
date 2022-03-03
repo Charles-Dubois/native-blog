@@ -7,7 +7,7 @@ import Home from "./views/Home";
 
 export const Context = createContext("default value");
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [Id, setId] = useState("");
   const [posts, setPosts] = useState([]);
   const handleLoggedIn = () => {
@@ -30,9 +30,9 @@ export default function App() {
     posts: posts,
     setPosts: setPosts,
   };
-  // const renderNavbar = () => {
-  //   return isLoggedIn ? <Navbar /> : <Navbar />;
-  // };
+  const renderNavbar = () => {
+    return isLoggedIn ? <Navbar /> : null;
+  };
   const renderLoggedIn = () => {
     return isLoggedIn ? <Home /> : <Login />;
   };
@@ -44,14 +44,9 @@ export default function App() {
             <Route exact path="/" element={renderLoggedIn()} />
           </Routes>
         </NativeRouter>
+        {renderNavbar()}
       </SafeAreaView>
     </Context.Provider>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+const styles = StyleSheet.create({});
